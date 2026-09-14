@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh‑CN">
+<head>
+    <meta charset="UTF‑8">
+    <meta name="viewport" content="width=device‑width, initial‑scale=1.0">
+    <title>大连双人旅行｜行程攻略</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box‑sizing: border‑box;
+        }
+        body {
+            font‑family: -apple‑system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans‑serif;
+            background: linear‑gradient(180deg, #f0f4f8 0%, #ffffff 100%);
+            max‑width: 480px;
+            margin: 0 auto;
+            padding‑bottom: 84px;
+            color:#1f2937;
+        }
+        .container {
+            padding: 20px 16px;
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        h1 {
+            font‑size:22px;
+            font‑weight:700;
+            margin‑bottom:4px;
+        }
+        .subtitle {
+            color:#6b7280;
+            font‑size:14px;
+            margin‑bottom:20px;
+        }
+        /* 警告提示块 */
+        .alert‑danger {
+            background: #fff1f2;
+            border‑left:4px solid #f43f5e;
+            border‑radius:12px;
+            padding:14px 16px;
+            margin‑bottom:18px;
+            font‑size:14px;
+            line‑height:1.6;
+        }
+        .alert‑tip {
+            background: #ecfdf5;
+            border‑left:4px solid #10b981;
+            border‑radius:12px;
+            padding:12px 16px;
+            margin‑bottom:18px;
+            font‑size:14px;
+        }
+        /* 主卡片 */
+        .card {
+            background:#ffffff;
+            border‑radius:16px;
+            padding:18px;
+            margin‑bottom:16px;
+            box‑shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .card‑day‑header {
+            display:flex;
+            justify‑content:space‑between;
+            align‑items:center;
+            margin‑bottom:12px;
+        }
+        .day‑title {
+            font‑size:17px;
+            font‑weight:600;
+        }
+        .day‑date {
+            font‑size:13px;
+            color:#6b7280;
+        }
+        .timeline‑item {
+            display:flex;
+            gap:12px;
+            padding:10px 0;
+            border‑bottom: 1px solid #f3f4f6;
+        }
+        .timeline‑item:last‑child {
+            border‑bottom:none;
+        }
+        .time‑badge {
+            flex‑shrink:0;
+            width:74px;
+            font‑size:13px;
+            color:#475569;
+            font‑weight:500;
+        }
+        .timeline‑content {
+            flex:1;
+            font‑size:14.5px;
+            line‑height:1.6;
+        }
+        /* 标签 */
+        .tag‑food {
+            display:inline‑block;
+            background:#fef2f7;
+            color:#db2777;
+            font‑size:12px;
+            padding:2px 7px;
+            border‑radius:6px;
+            margin‑left:6px;
+        }
+        .tag‑warn {
+            display:inline‑block;
+            background:#fffbeb;
+            color:#d97706;
+            font‑size:12px;
+            padding:2px 7px;
+            border‑radius:6px;
+            margin‑left:6px;
+        }
+        /* 首页横向滑动卡片 */
+        .scroll‑row {
+            display:flex;
+            overflow‑x:auto;
+            gap:12px;
+            padding:4px 0 10px 0;
+            margin‑bottom:18px;
+        }
+        .scroll‑row::-webkit‑scrollbar {
+            height:4px;
+        }
+        .mini‑card {
+            flex‑shrink:0;
+            width:142px;
+            background:#ffffff;
+            border‑radius:14px;
+            padding:14px;
+            box‑shadow:0 1px 8px rgba(0,0,0,0.05);
+        }
+        .mini‑card‑day {
+            font‑weight:600;
+            font‑size:15px;
+            margin‑bottom:4px;
+        }
+        .mini‑card‑desc {
+            font‑size:12px;
+            color:#6b7280;
+        }
+        /* Tab底部导航 */
+        .tab‑bar {
+            position:fixed;
+            bottom:0;
+            left:50%;
+            transform:translateX(-50%);
+            max‑width:480px;
+            width:100%;
+            background:#ffffff;
+            display:flex;
+            border‑top:1px solid #e5e7eb;
+            padding‑bottom:max(8px, env(safe‑area‑inset‑bottom));
+        }
+        .tab‑item {
+            flex:1;
+            text‑align:center;
+            padding:10px 0 8px;
+            font‑size:12.5px;
+            color:#9ca3af;
+            cursor:pointer;
+        }
+        .tab‑item.active {
+            color:#db2777;
+            font‑weight:500;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 总览页 -->
+    <div id="page‑home" class="page active">
+        <h1>大连双人旅行攻略</h1>
+        <div class="subtitle">9.23‑9.27｜全程入住东港全季酒店</div>
+
+        <div class="alert‑danger">
+            ⚠️关键风险提醒：杉木日料需要提前预约；无限虾享饭点排队严重，备选民权街分店；9.27预留充足时间前往北站。
+        </div>
+        <div class="alert‑tip">
+            💡两套路线：【基础观光路线】+【对象打卡美食路线】可灵活穿插执行
+        </div>
+
+        <div class="scroll‑row">
+            <div class="mini‑card">
+                <div class="mini‑card‑day">Day0 9.23</div>
+                <div class="mini‑card‑desc">抵达大连·夜宵</div>
+            </div>
+            <div class="mini‑card">
+                <div class="mini‑card‑day">Day1 9.24</div>
+                <div class="mini‑card‑desc">东港片区游玩</div>
+            </div>
+            <div class="mini‑card">
+                <div class="mini‑card‑day">Day2 9.25</div>
+                <div class="mini‑card‑desc">滨海东线·约拍</div>
+            </div>
+            <div class="mini‑card">
+                <div class="mini‑card‑day">Day3 9.26</div>
+                <div class="mini‑card‑desc">老城+星海+洗浴</div>
+            </div>
+            <div class="mini‑card">
+                <div class="mini‑card‑day">Day4 9.27</div>
+                <div class="mini‑card‑desc">半日游玩·返程</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="timeline‑item">
+                <div class="time‑badge">🚄去程</div>
+                <div class="timeline‑content">9‑23 21:09 抵达大连北站</div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">🚄返程</div>
+                <div class="timeline‑content">9‑27 18:10 高铁返回北京</div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">🏨住宿</div>
+                <div class="timeline‑content">东港全季酒店（全程）</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h4 style="margin‑bottom:10px;">💖对象必打卡美食清单</h4>
+            <div class="timeline‑item">
+                <div class="time‑badge">下午茶</div>
+                <div class="timeline‑content">SOO海岸线小狗咖啡｜星海海景撸小狗</div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">甜品</div>
+                <div class="timeline‑content">虾虾蛋糕店｜威尼斯水城夜景甜品</div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">正餐</div>
+                <div class="timeline‑content">杉木日料 <span class="tag‑warn">需预约</span></div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">夜宵</div>
+                <div class="timeline‑content">丹东小地炉烧烤</div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">夜宵</div>
+                <div class="timeline‑content">无限虾享｜风光街老店小龙虾</div>
+            </div>
+        </div>
+    </div>
+
+    <!--每日行程页-->
+    <div id="page‑day" class="page">
+        <h1>每日完整行程</h1>
+        <div class="subtitle">观光路线 + 美食打卡全部合并</div>
+
+        <div class="card">
+            <div class="card‑day‑header">
+                <div class="day‑title">Day0｜抵达夜晚</div>
+                <div class="day‑date">9月23日</div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">21:09</div>
+                <div class="timeline‑content">大连北站到站，打车约30分钟回东港酒店</div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">晚间</div>
+                <div class="timeline‑content">晚餐二选一：正黄旗东港店 / 澳深鱼市；简单夜宵后早点休息</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card‑day‑header">
+                <div class="day‑title">Day1｜东港片区就近游玩</div>
+                <div class="day‑date">9月24日</div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">白天</div>
+                <div class="timeline‑content">海之韵（海底大峡谷）→15库艺术园午饭咖啡 →港东五街入海公路 →威尼斯水城；<br/>可选：近海游船体验</div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">15:00‑17:30</div>
+                <div class="timeline‑content">SOO海岸线小狗咖啡（星海海景撸狗下午茶）<span class="tag‑food">打卡</span></div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">傍晚</div>
+                <div class="timeline‑content">返回东港，逛威尼斯水城，东港简餐晚餐</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card‑day‑header">
+                <div class="day‑title">Day2｜滨海东线｜情侣约拍</div>
+                <div class="day‑date">9月25日</div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">白天</div>
+                <div class="timeline‑content">棒棰岛 →渔人码头（午餐+情侣约拍） →菱角湾看跨海大桥</div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">17:00</div>
+                <div class="timeline‑content">虾虾蛋糕店｜水城甜品看夜景 <span class="tag‑food">打卡</span></div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">19:00</div>
+                <div class="timeline‑content">杉木日料正餐 <span class="tag‑food">打卡</span><span class="tag‑warn">务必预约</span></div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">21:30</div>
+                <div class="timeline‑content">丹东小地炉烧烤夜宵 <span class="tag‑food">打卡</span></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card‑day‑header">
+                <div class="day‑title">Day3｜老城 + 星海｜晚间洗浴</div>
+                <div class="day‑date">9月26日</div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">白天</div>
+                <div class="timeline‑content">中山广场+201有轨电车 →南山风情街午饭探店 →银沙滩 + 星海广场</div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">17:30</div>
+                <div class="timeline‑content">无限虾享（风光街老店小龙虾）<span class="tag‑food">打卡</span><span class="tag‑warn">排队备选民权街分店</span></div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">夜晚</div>
+                <div class="timeline‑content">返回东港，晚间洗浴放松</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card‑day‑header">
+                <div class="day‑title">Day4｜半日游玩 · 返程</div>
+                <div class="day‑date">9月27日</div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">上午</div>
+                <div class="timeline‑content">大连博物馆 / 海边咖啡二选一；中山广场、俄罗斯风情街采购伴手礼</div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">午间</div>
+                <div class="timeline‑content">东港收官午餐</div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">15:00</div>
+                <div class="timeline‑content">回酒店取行李</div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">👉16:00</div>
+                <div class="timeline‑content">务必打车出发前往大连北站，预留堵车缓冲</div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">18:10</div>
+                <div class="timeline‑content">高铁返回北京</div>
+            </div>
+        </div>
+    </div>
+
+    <!--美食汇总页-->
+    <div id="page‑food" class="page">
+        <h1>美食汇总</h1>
+        <div class="subtitle">打卡店 + 本地备选</div>
+        <div class="card">
+            <h4 style="margin‑bottom:10px;">💖对象打卡门店</h4>
+            <div class="timeline‑item">
+                <div class="time‑badge">下午茶</div>
+                <div class="timeline‑content">SOO海岸线小狗咖啡｜星海，海景+撸小狗，15点前后到店体验最好</div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">甜品</div>
+                <div class="timeline‑content">虾虾蛋糕店｜威尼斯水城，天黑之后夜景氛围最佳</div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">日料</div>
+                <div class="timeline‑content">杉木日料｜东港，必须电话提前预约座位</div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">烧烤夜宵</div>
+                <div class="timeline‑content">丹东小地炉烧烤｜东港片区，适合21点之后夜宵</div>
+            </div>
+            <div class="timeline‑item">
+                <div class="time‑badge">小龙虾</div>
+                <div class="timeline‑content">无限虾享风光街老店；排队过高直接转民权街分店</div>
+            </div>
+        </div>
+        <div class="card">
+            <h4 style="margin‑bottom:10px;">📍东港周边备选海鲜店</h4>
+            <div class="timeline‑item"><div class="time‑badge">正餐</div><div class="timeline‑content">正黄旗海鲜大排档</div></div>
+            <div class="timeline‑item"><div class="time‑badge">加工</div><div class="timeline‑content">澳深鱼市海鲜加工</div></div>
+            <div class="timeline‑item"><div class="time‑badge">水饺</div><div class="timeline‑content">喜鼎海胆水饺</div></div>
+        </div>
+    </div>
+
+    <!--交通预算页-->
+    <div id="page‑budget" class="page">
+        <h1>交通 & 预算参考</h1>
+        <div class="subtitle">基于东港全季酒店作为起点</div>
+        <div class="card">
+            <h4 style="margin‑bottom:10px;">🚗打车耗时参考</h4>
+            <div class="timeline‑item"><div class="time‑badge">北站↔酒店</div><div class="timeline‑content">约30分钟，晚高峰预留更多时间</div></div>
+            <div class="timeline‑item"><div class="time‑badge">酒店↔星海</div><div class="timeline‑content">约22分钟</div></div>
+            <div class="timeline‑item"><div class="time‑badge">酒店↔青泥洼</div><div class="timeline‑content">约18分钟</div></div>
+            <div class="timeline‑item"><div class="time‑badge">酒店↔棒棰岛</div><div class="timeline‑content">约25分钟</div></div>
+        </div>
+        <div class="card">
+            <h4 style="margin‑bottom:10px;">💰开销结构</h4>
+            <div class="timeline‑item"><div class="time‑badge">大项</div><div class="timeline‑content">往返高铁票、5晚酒店住宿</div></div>
+            <div class="timeline‑item"><div class="time‑badge">餐饮</div><div class="timeline‑content">杉木日料、无限虾享为主要餐饮支出</div></div>
+            <div class="timeline‑item"><div class="time‑badge">门票</div><div class="timeline‑content">绝大多数景点免费；棒棰岛按需购票</div></div>
+            <div class="timeline‑item"><div class="time‑badge">其他</div><div class="timeline‑content">打车、伴手礼、游船可选消费</div></div>
+        </div>
+    </div>
+
+    <!--待办清单页-->
+    <div id="page‑check" class="page">
+        <h1>出行待办清单</h1>
+        <div class="subtitle">出发前确认项 & 现场注意事项</div>
+        <div class="card">
+            <h4 style="margin‑bottom:10px;">🔴必须提前完成</h4>
+            <div class="timeline‑item"><div class="time‑badge">预约</div><div class="timeline‑content">☐杉木日料预约9‑25晚上19点席位</div></div>
+            <div class="timeline‑item"><div class="time‑badge">票务</div><div class="timeline‑content">☐确认往返高铁车票</div></div>
+        </div>
+        <div class="card">
+            <h4 style="margin‑bottom:10px;">🟡随身物品</h4>
+            <div class="timeline‑item"><div class="time‑badge">证件</div><div class="timeline‑content">☐身份证</div></div>
+            <div class="timeline‑item"><div class="time‑badge">穿搭</div><div class="timeline‑content">☐薄外套（海边昼夜温差大）</div></div>
+            <div class="timeline‑item"><div class="time‑badge">防护</div><div class="timeline‑content">☐防晒用品</div></div>
+            <div class="timeline‑item"><div class="time‑badge">电子</div><div class="timeline‑content">☐充电器、充电宝</div></div>
+        </div>
+        <div class="card">
+            <h4 style="margin‑bottom:10px;">🟢现场重点提醒</h4>
+            <div class="timeline‑item"><div class="time‑badge">吃饭</div><div class="timeline‑content">☐无限虾享排队过高，立刻切换民权街分店</div></div>
+            <div class="timeline‑item"><div class="time‑badge">返程</div><div class="timeline‑content">☐严格遵守16:00出发北站，晚高峰堵车风险高</div></div>
+        </div>
+    </div>
+</div>
+
+<!--底部Tab导航-->
+<div class="tab‑bar">
+    <div class="tab‑item active" data‑page="page‑home">总览</div>
+    <div class="tab‑item" data‑page="page‑day">每日行程</div>
+    <div class="tab‑item" data‑page="page‑food">美食</div>
+    <div class="tab‑item" data‑page="page‑budget">交通预算</div>
+    <div class="tab‑item" data‑page="page‑check">清单</div>
+</div>
+
+<script>
+    const tabs = document.querySelectorAll('.tab‑item');
+    tabs.forEach(tab => {
+        tab.onclick = ()=>{
+            document.querySelectorAll('.tab‑item').forEach(el=>el.classList.remove('active'));
+            document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
+            tab.classList.add('active');
+            const pageId = tab.getAttribute('data‑page');
+            document.getElementById(pageId).classList.add('active');
+        }
+    })
+</script>
+</body>
+</html>
